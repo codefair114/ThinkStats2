@@ -21,7 +21,14 @@ def Mode(hist):
 
     returns: value from Hist
     """
-    return 0
+    maxim = -1
+    maxim_key = -1
+    for x, y in hist.Items():
+        if maxim < y:
+            maxim = y
+            maxim_key = x
+
+    return maxim_key
 
 
 def AllModes(hist):
@@ -31,7 +38,7 @@ def AllModes(hist):
 
     returns: iterator of value-freq pairs
     """
-    return []
+    return sorted(hist.Items(), key=itemgetter(1), reverse=True)
 
 
 def main(script):
